@@ -13,7 +13,7 @@ const CreatePost = () => {
       title: title,
       postsText: postText,
       author: {
-        usename: auth.currentUser.displayName,
+        username: auth.currentUser.displayName,
         id: auth.currentUser.uid
       }
     })
