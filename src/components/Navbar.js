@@ -2,11 +2,11 @@ import React from 'react'
 import {Link} from "react-router-dom";
 import "./Navbar.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse, faFilePen, faArrowRightToBracket } from '@fortawesome/free-solid-svg-icons'
+import { faHouse, faFilePen, faArrowRightToBracket, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
 // Defaults to the Classic family, Solid style
 
-function Navbar() {
+function Navbar({ isAuth }) {
   return (
     <nav>
       <Link to="/">
@@ -17,10 +17,17 @@ function Navbar() {
         <FontAwesomeIcon icon={faFilePen} />
         記事投稿
       </Link>
-      <Link to="/Login">
-        <FontAwesomeIcon icon={faArrowRightToBracket} />
-        ログイン
-      </Link>
+      {!isAuth ? (
+        <Link to="/Login">
+          <FontAwesomeIcon icon={faArrowRightToBracket} />
+          ログイン
+        </Link> 
+      ) : ( 
+        <Link to="/Logout">
+          <FontAwesomeIcon icon={faArrowLeft} />
+          ログアウト
+        </Link>
+      )}
     </nav>
   )
 }
